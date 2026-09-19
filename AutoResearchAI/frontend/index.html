@@ -1,0 +1,588 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>AutoResearch AI | Deep Thinker Automotive Intelligence</title>
+  <meta name="description" content="Deep Thinker Automotive Web Research and Intelligent Answering System powered by Crawl4AI and Groq AI.">
+  <link rel="icon" type="image/svg+xml" href="/assets/images/logo.svg">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=Space+Grotesk:wght@500;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="/style.css">
+</head>
+<body>
+  <!-- Global Navigation Header -->
+  <header class="site-header">
+    <div class="header-container">
+      <a href="#home" class="brand-logo" id="navBrand">
+        <img src="/assets/images/logo.svg" alt="AutoResearch AI" width="36" height="36" class="logo-icon">
+        <div class="brand-text">
+          <span class="brand-title">AutoResearch<span class="accent-dot">AI</span></span>
+          <span class="brand-tagline">Deep Thinker Automotive Engine</span>
+        </div>
+      </a>
+
+      <!-- Desktop Navigation Menu (About Page Removed as requested) -->
+      <nav class="main-nav">
+        <a href="#home" class="nav-link active" data-section="home">Home</a>
+        <a href="#research" class="nav-link" data-section="research">Research</a>
+        <a href="#reports" class="nav-link" data-section="reports">Dossier Reports</a>
+        <a href="#compare" class="nav-link" data-section="compare">Compare</a>
+        <a href="#features" class="nav-link" data-section="features">Features</a>
+        <a href="#history" class="nav-link" data-section="history">History</a>
+      </nav>
+
+      <!-- Right Header Actions -->
+      <div class="header-actions">
+        <div class="deep-thinker-pill" title="Deep Thinker Mode Active: Rigorous Mechanical, Electrical & Thermodynamic Analysis">
+          <span class="pulse-spark">🧠</span>
+          <span class="pill-label">Deep Thinker</span>
+        </div>
+        <div class="system-status-pill" id="systemStatusPill" title="System Status: Ready">
+          <span class="status-indicator"></span>
+          <span class="status-label">Groq + Crawl4AI</span>
+        </div>
+        <button class="mobile-menu-toggle" id="mobileMenuToggle" aria-label="Toggle navigation menu">
+          <span></span>
+          <span></span>
+          <span></span>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <!-- Mobile Drawer Menu (About Page Removed) -->
+  <div class="mobile-drawer" id="mobileDrawer">
+    <nav class="mobile-nav">
+      <a href="#home" class="mobile-nav-link" data-section="home">Home</a>
+      <a href="#research" class="mobile-nav-link" data-section="research">Research</a>
+      <a href="#reports" class="mobile-nav-link" data-section="reports">Dossier Reports</a>
+      <a href="#compare" class="mobile-nav-link" data-section="compare">Compare</a>
+      <a href="#features" class="mobile-nav-link" data-section="features">Features</a>
+      <a href="#history" class="mobile-nav-link" data-section="history">History</a>
+    </nav>
+  </div>
+
+  <main class="main-content">
+    <!-- ==========================================================
+         HOME SECTION (HERO + QUICK SEARCH + EXAMPLES + FEATURES)
+         ========================================================== -->
+    <section id="home-section" class="view-section active">
+      <!-- Hero Section -->
+      <div class="hero-wrapper">
+        <div class="hero-container">
+          <div class="hero-badge">
+            <span class="badge-icon">🧠</span>
+            <span>Deep Thinker Engine • Researches Any Car & Automotive Data Worldwide</span>
+          </div>
+
+          <h1 class="hero-title">
+            Research Any Car. <br><span class="gradient-text">Ask Anything.</span>
+          </h1>
+
+          <p class="hero-subtitle">
+            Enter any car model worldwide, mechanical question, EV battery comparison, or technical data.
+            AutoResearch AI crawls verified web evidence and executes deep engineering analysis.
+          </p>
+
+          <!-- Large Search Form -->
+          <form id="heroSearchForm" class="search-box-card" onsubmit="return false;">
+            <div class="search-input-wrapper">
+              <span class="search-icon">🔍</span>
+              <input
+                type="text"
+                id="mainSearchInput"
+                class="main-search-input"
+                placeholder="Ask anything about ANY car, EV, engine, transmission, specs, prices..."
+                autocomplete="off"
+                required
+              >
+            </div>
+            <div class="search-actions-group">
+              <button type="button" id="voiceSearchBtn" class="btn btn-voice" title="Click to speak your automotive question">
+                <span class="voice-icon">🎙</span>
+                <span class="voice-label">Voice Assistant</span>
+              </button>
+              <button type="submit" id="searchSubmitBtn" class="btn btn-primary btn-research">
+                <span>Deep Research</span>
+                <span class="btn-arrow">→</span>
+              </button>
+            </div>
+          </form>
+
+          <!-- Voice Listening Banner with Animated Soundwave -->
+          <div id="voiceListeningBanner" class="voice-banner hidden">
+            <div class="soundwave-bars">
+              <span class="bar"></span>
+              <span class="bar"></span>
+              <span class="bar"></span>
+              <span class="bar"></span>
+              <span class="bar"></span>
+            </div>
+            <span class="voice-status-text">Voice Assistant listening... Speak your car or automotive query now!</span>
+            <button type="button" id="cancelVoiceBtn" class="btn-close-sm" title="Cancel listening">&times;</button>
+          </div>
+
+          <!-- Example Queries Across Any Model & Technical Data -->
+          <div class="examples-container">
+            <span class="examples-title">Popular Research & Technical Prompts:</span>
+            <div class="query-pills-grid">
+              <button class="query-pill" data-query="Compare Tata Nexon EV and Hyundai Creta Electric">
+                <span class="pill-tag">EV Comparison</span>
+                <span>Compare Tata Nexon EV and Hyundai Creta Electric</span>
+              </button>
+              <button class="query-pill" data-query="Give specifications of Mahindra XUV700">
+                <span class="pill-tag">SUV Specs</span>
+                <span>Give specifications of Mahindra XUV700</span>
+              </button>
+              <button class="query-pill" data-query="Porsche 911 GT3 RS vs BMW M3 Competition">
+                <span class="pill-tag">Track Supercars</span>
+                <span>Porsche 911 GT3 RS vs BMW M3 Competition</span>
+              </button>
+              <button class="query-pill" data-query="How does a dual-clutch transmission work vs torque converter?">
+                <span class="pill-tag">Engineering</span>
+                <span>How does a dual-clutch transmission work vs torque converter?</span>
+              </button>
+              <button class="query-pill" data-query="Compare LFP vs NMC battery chemistry in electric vehicles">
+                <span class="pill-tag">Battery Tech</span>
+                <span>Compare LFP vs NMC battery chemistry in electric vehicles</span>
+              </button>
+              <button class="query-pill" data-query="Best EVs under ₹20 lakh in India">
+                <span class="pill-tag">EV Guide</span>
+                <span>Best EVs under ₹20 lakh in India</span>
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Features Cards Section -->
+      <section class="features-section" id="features">
+        <div class="section-header">
+          <span class="section-eyebrow">Enterprise Capabilities</span>
+          <h2 class="section-title">Engineered for Deep Automotive Analysis</h2>
+          <p class="section-desc">From any global supercar to everyday commuters and deep powertrain thermodynamics, AutoResearch AI uncovers verified truth.</p>
+        </div>
+
+        <div class="features-grid">
+          <!-- Card 1 -->
+          <div class="feature-card">
+            <div class="feature-icon-box">🧠</div>
+            <h3 class="feature-title">Deep Thinker Mode</h3>
+            <p class="feature-desc">Rigorous engineering reasoning analyzing volumetric efficiency, drag physics, thermal regulation, and structural safety dynamics.</p>
+          </div>
+
+          <!-- Card 2 -->
+          <div class="feature-card">
+            <div class="feature-icon-box">🌐</div>
+            <h3 class="feature-title">Universal Vehicle Search</h3>
+            <p class="feature-desc">Research ANY vehicle model worldwide—from Indian bestsellers (Thar, Nexon, Creta) to global icons (Porsche 911, Ferrari 296, Tesla Cybertruck).</p>
+          </div>
+
+          <!-- Card 3 -->
+          <div class="feature-card">
+            <div class="feature-icon-box">📄</div>
+            <h3 class="feature-title">Instant Dossier Reports</h3>
+            <p class="feature-desc">Generate print-ready, comprehensive automotive technical reports with pros/cons, powertrain analysis, and engineer's verdicts.</p>
+          </div>
+
+          <!-- Card 4 -->
+          <div class="feature-card">
+            <div class="feature-icon-box">🎙️</div>
+            <h3 class="feature-title">Interactive Voice Assistant</h3>
+            <p class="feature-desc">Natural speech-to-text input with live visual audio feedback, accompanied by text-to-speech audio playback of executive summaries.</p>
+          </div>
+
+          <!-- Card 5 -->
+          <div class="feature-card">
+            <div class="feature-icon-box">⚖️</div>
+            <h3 class="feature-title">Car Comparison with Conflict Flags</h3>
+            <p class="feature-desc">Evaluates 11 key engineering attributes across multiple vehicles and automatically detects conflicting manufacturer vs portal figures.</p>
+          </div>
+
+          <!-- Card 6 -->
+          <div class="feature-card">
+            <div class="feature-icon-box">🛡️</div>
+            <h3 class="feature-title">Crawl4AI Provenance</h3>
+            <p class="feature-desc">Asynchronous, rate-limited extraction of permitted official OEM pages, ARAI certified ratings, and NHTSA safety registries.</p>
+          </div>
+        </div>
+      </section>
+    </section>
+
+    <!-- ==========================================================
+         RESEARCH RESULTS SECTION
+         ========================================================== -->
+    <section id="research-section" class="view-section">
+      <div class="results-layout-container">
+        <!-- Live Research Status Bar -->
+        <div class="research-status-panel card" id="researchStatusPanel">
+          <div class="status-top-row">
+            <div class="query-info">
+              <span class="status-pill" id="resultQueryType">General Automotive</span>
+              <h2 class="active-query-title" id="displayActiveQuery">Enter a query to start research</h2>
+            </div>
+            <div class="status-meta">
+              <button class="btn btn-secondary btn-sm" id="generateReportFromQueryBtn" title="Generate Full Vehicle Report for this query">
+                📄 Generate Dossier Report
+              </button>
+              <button class="btn btn-secondary btn-sm" id="speakSummaryBtn" title="Listen to summary via Voice Assistant">
+                🔊 Speak Answer
+              </button>
+              <span id="pipelineTimer" class="time-badge">0.0s</span>
+            </div>
+          </div>
+
+          <!-- Pipeline Step Animation -->
+          <div class="pipeline-tracker" id="pipelineTracker">
+            <div class="pipeline-step" id="step-understand">
+              <div class="step-dot">1</div>
+              <span class="step-name">Query Understanding</span>
+            </div>
+            <div class="pipeline-line"></div>
+            <div class="pipeline-step" id="step-discover">
+              <div class="step-dot">2</div>
+              <span class="step-name">Web Discovery</span>
+            </div>
+            <div class="pipeline-line"></div>
+            <div class="pipeline-step" id="step-crawl">
+              <div class="step-dot">3</div>
+              <span class="step-name">Crawl4AI Extraction</span>
+            </div>
+            <div class="pipeline-line"></div>
+            <div class="pipeline-step" id="step-synthesize">
+              <div class="step-dot">4</div>
+              <span class="step-name">Deep Thinker Synthesis</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Research Loading State -->
+        <div class="loading-state card hidden" id="researchLoadingState">
+          <div class="spinner-automotive">
+            <div class="spinner-ring"></div>
+            <span class="spinner-icon">🏎️</span>
+          </div>
+          <h3 class="loading-heading">Deep Thinker Researching Automotive Evidence...</h3>
+          <p class="loading-sub" id="loadingStatusMessage">Extracting webpage evidence via Crawl4AI and synthesizing engineering facts with Groq AI...</p>
+        </div>
+
+        <!-- Note Banner (if any fallback/info) -->
+        <div id="researchNoteBanner" class="note-banner card hidden"></div>
+
+        <!-- Results Cards Grid -->
+        <div class="results-cards-flow hidden" id="resultsCardsFlow">
+          <!-- CARD 1: Executive Summary -->
+          <div class="result-card card" id="cardSummary">
+            <div class="card-header">
+              <div class="card-title-group">
+                <span class="card-header-icon">📋</span>
+                <h3 class="card-title">Executive Summary</h3>
+              </div>
+              <div class="card-action-btns">
+                <button class="btn-copy-card" id="speakSummaryCardBtn" title="Listen to summary">🔊 Speak</button>
+                <button class="btn-copy-card" id="copyAnswerBtn" title="Copy answer">Copy</button>
+              </div>
+            </div>
+            <div class="card-body">
+              <p class="summary-highlight" id="summaryTextContent"></p>
+              <div class="full-answer-markdown" id="answerMarkdownContent"></div>
+            </div>
+          </div>
+
+          <!-- CARD 2: DEEP THINKER ENGINEERING INSIGHTS -->
+          <div class="result-card card card-deep-thinker" id="cardDeepThinker">
+            <div class="card-header">
+              <div class="card-title-group">
+                <span class="card-header-icon">🧠</span>
+                <h3 class="card-title">Deep Thinker: Automotive Engineering Breakdown</h3>
+              </div>
+              <span class="badge-deep-thinker">Principal Engineer Analysis</span>
+            </div>
+            <div class="card-body">
+              <div class="deep-thinker-content" id="deepThinkerContent"></div>
+            </div>
+          </div>
+
+          <!-- CARD 3: Key Specifications -->
+          <div class="result-card card" id="cardSpecifications">
+            <div class="card-header">
+              <div class="card-title-group">
+                <span class="card-header-icon">⚙️</span>
+                <h3 class="card-title">Verified Specifications</h3>
+              </div>
+              <span class="badge-count" id="specsCountBadge">0 Specs</span>
+            </div>
+            <div class="card-body">
+              <div class="specs-grid" id="specsGridContainer"></div>
+            </div>
+          </div>
+
+          <!-- CARD 4: Vehicle Comparison Matrix -->
+          <div class="result-card card hidden" id="cardComparison">
+            <div class="card-header">
+              <div class="card-title-group">
+                <span class="card-header-icon">⚖️</span>
+                <h3 class="card-title">Side-by-Side Comparison</h3>
+              </div>
+              <div id="conflictAlertPill" class="conflict-pill hidden">
+                ⚠️ Conflicting information found
+              </div>
+            </div>
+            <div class="card-body">
+              <div class="table-responsive">
+                <table class="comparison-table" id="comparisonTable">
+                  <thead id="comparisonTableHead"></thead>
+                  <tbody id="comparisonTableBody"></tbody>
+                </table>
+              </div>
+              <div id="conflictDetailsContainer" class="conflict-details-box hidden"></div>
+            </div>
+          </div>
+
+          <!-- CARD 5: Key Findings -->
+          <div class="result-card card" id="cardKeyFindings">
+            <div class="card-header">
+              <div class="card-title-group">
+                <span class="card-header-icon">🔍</span>
+                <h3 class="card-title">Key Engineering Findings</h3>
+              </div>
+            </div>
+            <div class="card-body">
+              <ul class="findings-list" id="findingsListContainer"></ul>
+            </div>
+          </div>
+
+          <!-- CARD 6: Sources & Reliability -->
+          <div class="result-card card" id="cardSources">
+            <div class="card-header">
+              <div class="card-title-group">
+                <span class="card-header-icon">🌐</span>
+                <h3 class="card-title">Verified Sources & Evidence</h3>
+              </div>
+              <span class="badge-count" id="sourcesCountBadge">0 Sources</span>
+            </div>
+            <div class="card-body">
+              <div class="sources-grid" id="sourcesGridContainer"></div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Empty / Idle State -->
+        <div class="empty-state card" id="researchEmptyState">
+          <div class="empty-icon">🚗</div>
+          <h3>Ready to Research Any Vehicle or Engineering Topic</h3>
+          <p>Type any car model, EV battery comparison, or mechanical question above to initiate live web extraction and Deep Thinker analysis.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- ==========================================================
+         VEHICLE DOSSIER REPORT GENERATOR SECTION
+         ========================================================== -->
+    <section id="reports-section" class="view-section">
+      <div class="report-generator-wrapper">
+        <div class="card report-input-card">
+          <div class="section-header" style="text-align: left; margin-bottom: 1.5rem;">
+            <span class="section-eyebrow">Comprehensive Intelligence</span>
+            <h2 class="section-title">Generate Vehicle Research Dossier</h2>
+            <p class="section-desc">Produce an exhaustive, printable engineering report for ANY vehicle model worldwide—including verified specs, pros & cons, chassis safety, maintenance projections, and final verdict.</p>
+          </div>
+
+          <form id="reportGenerateForm" class="report-input-form" onsubmit="return false;">
+            <div class="search-input-wrapper">
+              <span class="search-icon">🏎️</span>
+              <input
+                type="text"
+                id="reportVehicleInput"
+                class="main-search-input"
+                placeholder="Enter any car model (e.g. Porsche 911 GT3, Tata Curvv EV, Toyota Fortuner, Tesla Cybertruck)..."
+                value="Porsche 911 GT3"
+                required
+              >
+            </div>
+            <button type="submit" id="generateReportBtn" class="btn btn-primary">
+              Generate Full Dossier Report →
+            </button>
+          </form>
+
+          <div class="presets-row" style="margin-top: 1rem;">
+            <span class="presets-label">Popular Dossiers:</span>
+            <button class="preset-tag report-preset" data-car="Tata Nexon EV">Tata Nexon EV</button>
+            <button class="preset-tag report-preset" data-car="Mahindra XUV700">Mahindra XUV700</button>
+            <button class="preset-tag report-preset" data-car="Porsche 911 GT3">Porsche 911 GT3</button>
+            <button class="preset-tag report-preset" data-car="BMW M3 Competition">BMW M3</button>
+            <button class="preset-tag report-preset" data-car="Tesla Cybertruck">Tesla Cybertruck</button>
+            <button class="preset-tag report-preset" data-car="Ferrari 296 GTB">Ferrari 296 GTB</button>
+          </div>
+        </div>
+
+        <!-- Report Loading Indicator -->
+        <div id="reportLoadingIndicator" class="loading-state card hidden" style="margin-top: 2rem;">
+          <div class="spinner-automotive">
+            <div class="spinner-ring"></div>
+            <span class="spinner-icon">📄</span>
+          </div>
+          <h3 class="loading-heading">Compiling Vehicle Engineering Dossier...</h3>
+          <p class="loading-sub">Crawling vehicle technical archives and preparing deep-dive report...</p>
+        </div>
+
+        <!-- Rendered Dossier View -->
+        <div id="dossierReportContainer" class="dossier-report-view card hidden" style="margin-top: 2rem;">
+          <div class="dossier-header-bar">
+            <div class="dossier-title-area">
+              <span class="dossier-confidential-badge">AUTOMOTIVE ENGINEERING DOSSIER</span>
+              <h1 class="dossier-vehicle-title" id="dossierVehicleName">Vehicle Name</h1>
+              <p class="dossier-tagline" id="dossierTagline">Vehicle Tagline</p>
+              <div class="dossier-date" id="dossierDate">Generated Date</div>
+            </div>
+            <div class="dossier-actions">
+              <button class="btn btn-secondary" id="printReportBtn" title="Print or save as PDF">
+                🖨️ Print / Save PDF
+              </button>
+            </div>
+          </div>
+
+          <div class="dossier-body">
+            <!-- Executive Overview -->
+            <div class="dossier-section">
+              <h3 class="dossier-section-title">1. Executive Overview & Architecture</h3>
+              <p class="dossier-text" id="dossierOverview"></p>
+            </div>
+
+            <!-- Technical Specifications Grid -->
+            <div class="dossier-section">
+              <h3 class="dossier-section-title">2. Verified Engineering Specifications</h3>
+              <div class="specs-grid" id="dossierSpecsGrid"></div>
+            </div>
+
+            <!-- Pros & Cons Grid -->
+            <div class="dossier-section">
+              <h3 class="dossier-section-title">3. Standout Advantages & Critical Compromises</h3>
+              <div class="pros-cons-grid">
+                <div class="pros-column">
+                  <h4 class="column-title pros-title">✓ Engineering Strengths</h4>
+                  <ul class="pros-list" id="dossierProsList"></ul>
+                </div>
+                <div class="cons-column">
+                  <h4 class="column-title cons-title">⚠ Critical Compromises</h4>
+                  <ul class="cons-list" id="dossierConsList"></ul>
+                </div>
+              </div>
+            </div>
+
+            <!-- Powertrain & Thermal Analysis -->
+            <div class="dossier-section">
+              <h3 class="dossier-section-title">4. Powertrain & Thermal Dynamics</h3>
+              <p class="dossier-text" id="dossierPowertrain"></p>
+            </div>
+
+            <!-- Safety & Chassis -->
+            <div class="dossier-section">
+              <h3 class="dossier-section-title">5. Chassis Rigidity & Structural Safety</h3>
+              <p class="dossier-text" id="dossierSafety"></p>
+            </div>
+
+            <!-- Ownership & Maintenance -->
+            <div class="dossier-section">
+              <h3 class="dossier-section-title">6. Total Cost of Ownership & Maintenance Cycles</h3>
+              <p class="dossier-text" id="dossierOwnership"></p>
+            </div>
+
+            <!-- Final Engineer's Verdict -->
+            <div class="dossier-section verdict-section">
+              <h3 class="dossier-section-title">7. Principal Engineer's Verdict</h3>
+              <div class="verdict-box" id="dossierVerdict"></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ==========================================================
+         COMPARE BUILDER SECTION
+         ========================================================== -->
+    <section id="compare-section" class="view-section">
+      <div class="compare-builder-container card">
+        <div class="section-header" style="margin-bottom: 2rem;">
+          <span class="section-eyebrow">Vehicle Head-to-Head</span>
+          <h2 class="section-title">Compare Any Automotive Models</h2>
+          <p class="section-desc">Select 2 to 4 vehicles from any brand to generate a deep attribute matrix across pricing, powertrain, battery, range, dimensions, and safety ratings.</p>
+        </div>
+
+        <form id="directCompareForm" class="compare-inputs-grid">
+          <div class="input-field-group">
+            <label for="compCar1">Vehicle 1</label>
+            <input type="text" id="compCar1" placeholder="e.g. Tata Nexon EV" value="Tata Nexon EV" required>
+          </div>
+          <div class="vs-divider">VS</div>
+          <div class="input-field-group">
+            <label for="compCar2">Vehicle 2</label>
+            <input type="text" id="compCar2" placeholder="e.g. Hyundai Creta Electric" value="Hyundai Creta Electric" required>
+          </div>
+          <div class="vs-divider optional-vs">VS</div>
+          <div class="input-field-group">
+            <label for="compCar3">Vehicle 3 (Optional)</label>
+            <input type="text" id="compCar3" placeholder="e.g. Tata Curvv EV">
+          </div>
+          <div class="compare-submit-row">
+            <button type="submit" class="btn btn-primary" style="width: 100%; padding: 1rem;">
+              Compare Vehicles Now →
+            </button>
+          </div>
+        </form>
+
+        <!-- Quick Compare Presets -->
+        <div class="presets-row">
+          <span class="presets-label">Popular Presets:</span>
+          <button class="preset-tag" data-c1="Porsche 911 GT3" data-c2="BMW M3 Competition">911 GT3 vs M3</button>
+          <button class="preset-tag" data-c1="Tata Nexon EV" data-c2="Hyundai Creta Electric">Nexon EV vs Creta EV</button>
+          <button class="preset-tag" data-c1="Mahindra XUV700" data-c2="Tata Safari">XUV700 vs Safari</button>
+          <button class="preset-tag" data-c1="Tesla Model 3" data-c2="BYD Seal">Model 3 vs BYD Seal</button>
+        </div>
+      </div>
+    </section>
+
+    <!-- ==========================================================
+         HISTORY SECTION
+         ========================================================== -->
+    <section id="history-section" class="view-section">
+      <div class="history-container card">
+        <div class="card-header">
+          <div class="card-title-group">
+            <span class="card-header-icon">⏱️</span>
+            <h2 class="card-title">Research History & Saved Sessions</h2>
+          </div>
+          <button class="btn btn-secondary" id="refreshHistoryBtn">Refresh History</button>
+        </div>
+        <div class="card-body">
+          <div id="historyListContainer" class="history-list">
+            <div class="loading-spinner-sm">Loading history...</div>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+
+
+  <!-- Toast Notification Container -->
+  <div id="toastContainer" class="toast-container"></div>
+
+  <!-- Footer -->
+  <footer class="site-footer">
+    <div class="footer-container">
+      <div class="footer-brand">
+        <span class="brand-title">AutoResearch AI</span>
+        <p>Deep Thinker AI Automotive Web Research & Multi-Source Intelligence System.</p>
+      </div>
+      <div class="footer-copy">
+        &copy; 2026 AutoResearch AI. Engineered with FastAPI, Crawl4AI, and Groq AI.
+      </div>
+    </div>
+  </footer>
+
+  <script src="/app.js"></script>
+</body>
+</html>

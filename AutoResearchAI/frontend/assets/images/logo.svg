@@ -1,0 +1,15 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 40 40" width="40" height="40">
+  <defs>
+    <linearGradient id="carGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#38BDF8"/>
+      <stop offset="100%" stop-color="#2563EB"/>
+    </linearGradient>
+  </defs>
+  <rect width="40" height="40" rx="10" fill="#0F172A"/>
+  <path d="M7 26 C9 21, 12 18, 17 17 L22 17 C26 17, 30 19, 33 22 L34 26 C34 27.1, 33.1 28, 32 28 L30 28 C29.5 26.3, 27.9 25, 26 25 C24.1 25, 22.5 26.3, 22 28 L17 28 C16.5 26.3, 14.9 25, 13 25 C11.1 25, 9.5 26.3, 9 28 L8 28 C6.9 28, 6 27.1, 6 26 Z" fill="url(#carGrad)"/>
+  <circle cx="13" cy="28" r="2.8" fill="#FFFFFF"/>
+  <circle cx="26" cy="28" r="2.8" fill="#FFFFFF"/>
+  <path d="M18 13 L21 10 L23 10 L20 13 Z" fill="#38BDF8" opacity="0.8"/>
+  <circle cx="27" cy="12" r="1.5" fill="#38BDF8"/>
+  <circle cx="31" cy="15" r="1" fill="#60A5FA"/>
+</svg>
